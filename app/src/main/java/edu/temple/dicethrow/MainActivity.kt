@@ -16,14 +16,20 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager
                 .beginTransaction()
                 .add(R.id.fragmentContainerView, DieFragment.newInstance(20))
+                .add(R.id.fragmentContainerView2, DieFragment.newInstance(6))
                 .commit()
         }
 
         findViewById<Button>(R.id.rollDiceButton).setOnClickListener{
-            supportFragmentManager
+            val die1 = supportFragmentManager
                 .findFragmentById(R.id.fragmentContainerView)?.run{
                     (this as DieFragment).throwDie()
             }
+
+            val die2 = supportFragmentManager
+                .findFragmentById(R.id.fragmentContainerView2)?.run{
+                    (this as DieFragment).throwDie()
+                }
         }
     }
 }
